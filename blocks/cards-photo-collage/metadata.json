@@ -1,0 +1,33 @@
+{
+  "variantName": "cards-photo-collage",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "image-only",
+    "structure": "linked image per item",
+    "purpose": "photo gallery: sticky full-viewport scroll-driven collage on tablet/desktop (photos scatter out of a stack as you scroll), horizontal swipe slider on mobile, every photo opens in a keyboard-accessible lightbox"
+  },
+  "contentPattern": {
+    "structure": "one row per photo; the single cell holds an image (alt text required) linked to its full-size file, either as a link wrapping the image or a link placed next to it. Without a link the image itself opens in the lightbox",
+    "fields": [
+      "image",
+      "full-size image link"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": {
+    "pages": [
+      "https://clarklanting.com/"
+    ],
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-11-11T00:00:00Z"
+  },
+  "reuseGuidance": "Use for an image-only photo gallery (around 6-12 photos) where each photo should open full size. Collage layout positions the first 12 photos in fixed slots and cycles them beyond 12. With prefers-reduced-motion the tablet/desktop layout becomes a static grid. For photos with titles or text use a cards variant instead."
+}

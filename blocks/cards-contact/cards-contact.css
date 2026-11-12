@@ -1,0 +1,56 @@
+/* cards-contact: values measured from clarklanting.com #support .clark-support */
+
+/* Intrinsic grid from the source: 1 column on phones, 2 on tablets, 3 on desktop */
+.cards-contact > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+
+.cards-contact .cards-contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  min-width: 0;
+  padding: var(--gap-lg) 28px;
+  border-style: solid;
+  border-width: 3px 1px 1px;
+  border-color: var(--accent-color) rgb(255 255 255 / 14%) rgb(255 255 255 / 14%);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 4%);
+}
+
+.cards-contact .cards-contact-label {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 65%);
+}
+
+.cards-contact .cards-contact-value {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.cards-contact .cards-contact-value a:any-link {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--heading-color);
+  text-decoration: none;
+}
+
+.cards-contact .cards-contact-value a:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* External links (target set in JS) show a trailing arrow, as on the source */
+.cards-contact .cards-contact-value a[target="_blank"]::after {
+  content: " \2197";
+}

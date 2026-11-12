@@ -1,0 +1,37 @@
+{
+  "variantName": "columns-embed",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + link + video",
+    "purpose": "text column (heading, text, link) beside an embedded media player such as a Spotify playlist"
+  },
+  "contentPattern": {
+    "structure": "one row, two cells: text cell (heading, text, links) | embed cell holding only the share link of a Spotify, YouTube or Vimeo item, which becomes a lazy-loaded iframe",
+    "fields": [
+      "heading",
+      "text",
+      "link",
+      "embed url"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_0acfb01f4a22"
+  ],
+  "usage": {
+    "pages": [
+      "https://clarklanting.com/"
+    ],
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-11-11T17:18:59Z"
+  },
+  "reuseGuidance": "Use when a text column sits next to an embedded third-party player. For image/text columns use columns."
+}

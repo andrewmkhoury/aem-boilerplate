@@ -1,0 +1,38 @@
+{
+  "variantName": "inquiry-form",
+  "baseBlock": "custom",
+  "canonicalModel": "configuration",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + field + video + button",
+    "purpose": "intro text beside a booking inquiry form with honeypot, optional reCAPTCHA and submit"
+  },
+  "contentPattern": {
+    "structure": "a one-cell intro row (heading + text); then one row per field: Label | type | value [| name]. type is text, email, tel, textarea, hidden, honeypot, recaptcha or submit; end a label with * for required or (optional) for optional; value is the textarea default text, input placeholder, hidden value or reCAPTCHA site key. Config rows: action | URL, method | post, success | message, error | message",
+    "fields": [
+      "intro",
+      "fields",
+      "action",
+      "success",
+      "error"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_8b53f51d96f3"
+  ],
+  "usage": {
+    "pages": [
+      "https://clarklanting.com/"
+    ],
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-11-11T17:18:59Z"
+  },
+  "reuseGuidance": "Use for simple contact/booking forms posting to an external endpoint. Submits with fetch (no-cors when cross-origin, so a cross-origin post is reported as sent without reading the reply); a filled honeypot is silently dropped."
+}

@@ -1,0 +1,43 @@
+{
+  "variantName": "cards-video",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "link + image",
+    "purpose": "grid of cards that each play a video file (mp4) in place when clicked"
+  },
+  "contentPattern": {
+    "structure": "one row per card; cells: image | body (optional title, subtitle, and a link to a video file such as .mp4, whose text becomes the play button label). A body holding only the video link puts a play button over the image",
+    "fields": [
+      "image",
+      "title",
+      "subtitle",
+      "video link"
+    ]
+  },
+  "options": [
+    {
+      "class": "text-over-image",
+      "label": "Text Over Image"
+    }
+  ],
+  "memberVariantIds": [
+    "v_9d82f872d4b1",
+    "v_93cf1c51dea1"
+  ],
+  "usage": {
+    "pages": [
+      "https://clarklanting.com/"
+    ],
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-11-11T17:18:59Z"
+  },
+  "reuseGuidance": "Default: 1/2/3-column grid of cover cards with a play button (cover song samples). Add the text-over-image option for wide photo tiles with title, subtitle and watch button laid over the image, 2 columns (live performances)."
+}

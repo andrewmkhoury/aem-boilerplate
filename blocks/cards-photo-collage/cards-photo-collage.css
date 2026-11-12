@@ -1,0 +1,318 @@
+/* stylelint-disable no-descending-specificity */
+
+/* cards-photo-collage: values measured on clarklanting.com #gallery */
+
+/* mobile: horizontal swipe slider, slides 5/6 of the row incl. one 15px gutter */
+.cards-photo-collage .cards-photo-collage-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 20px;
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.cards-photo-collage .cards-photo-collage-item {
+  flex: 0 0 calc((100% + 15px) * 5 / 6 - 15px);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.cards-photo-collage .cards-photo-collage-link {
+  position: relative;
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.cards-photo-collage .cards-photo-collage-link:focus-visible {
+  outline: 3px solid currentcolor;
+  outline-offset: 3px;
+}
+
+/* hover overlay: dark scanline veil fades in */
+.cards-photo-collage .cards-photo-collage-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(29 29 29 / 60%);
+  background-image: repeating-linear-gradient(0deg, rgb(0 0 0 / 12%) 0, rgb(0 0 0 / 12%) 1px, rgb(0 0 0 / 0%) 2px, rgb(0 0 0 / 0%) 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+
+.cards-photo-collage .cards-photo-collage-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.03);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out, filter 0.3s ease-out;
+  mask-image:
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
+    linear-gradient(transparent, #000 10%, #000 82%, transparent);
+  mask-composite: intersect;
+}
+
+.cards-photo-collage .cards-photo-collage-link:hover img,
+.cards-photo-collage .cards-photo-collage-link:focus-visible img {
+  transform: scale(1);
+}
+
+.cards-photo-collage .cards-photo-collage-link:hover::after,
+.cards-photo-collage .cards-photo-collage-link:focus-visible::after {
+  opacity: 1;
+}
+
+/* lightbox */
+.cards-photo-collage .cards-photo-collage-lightbox {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  padding: 48px 8px;
+  border: 0;
+  background: rgb(0 0 0 / 92%);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox figure {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox figure img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100% - 48px);
+  object-fit: contain;
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox figcaption {
+  text-align: center;
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox button {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 15%);
+  color: inherit;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox button:hover {
+  background: rgb(255 255 255 / 30%);
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.cards-photo-collage .cards-photo-collage-lightbox .cards-photo-collage-lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* tablet+ with reduced motion: static grid */
+@media (width >= 600px) and (prefers-reduced-motion: reduce) {
+  .cards-photo-collage .cards-photo-collage-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .cards-photo-collage .cards-photo-collage-link img {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (width >= 900px) and (prefers-reduced-motion: reduce) {
+  .cards-photo-collage .cards-photo-collage-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* tablet+ with motion: full-bleed */
+@media (width >= 600px) and (prefers-reduced-motion: no-preference) {
+  main .section > .cards-photo-collage-wrapper {
+    max-width: none;
+    padding: 40px 0 0;
+  }
+}
+
+/* tablet+ with motion: 300vh track, sticky 100vh stage, photos scattered
+   around a zero-height anchor and pushed outwards by scroll (see JS) */
+@media (width >= 600px) and (prefers-reduced-motion: no-preference) {
+  .cards-photo-collage {
+    height: 300vh;
+    overflow: clip visible;
+  }
+
+  .cards-photo-collage .cards-photo-collage-stage {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 100vh;
+  }
+
+  .cards-photo-collage .cards-photo-collage-list {
+    position: relative;
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item {
+    position: absolute;
+    will-change: transform, opacity, filter;
+  }
+
+  .cards-photo-collage .cards-photo-collage-link img {
+    aspect-ratio: 7 / 9;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 1) {
+    right: 75vw;
+    bottom: -19vh;
+    width: 300px;
+    max-width: 28vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 2) {
+    display: none;
+    left: 14vw;
+    bottom: -60vh;
+    width: 180px;
+    max-width: 28vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 3) {
+    right: 60vw;
+    top: 60vh;
+    width: 280px;
+    max-width: 30vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 4) {
+    right: 55vw;
+    top: 25vh;
+    z-index: 3;
+    width: 300px;
+    max-width: 28vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 5) {
+    left: 55vw;
+    top: 8vh;
+    width: 230px;
+    max-width: 28vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 6) {
+    display: none;
+    left: 60vw;
+    top: 50vh;
+    width: 230px;
+    max-width: 30vw;
+    mix-blend-mode: overlay;
+  }
+
+  /* the large square centre photo */
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 7) {
+    left: 28vw;
+    top: 38vh;
+    z-index: 20;
+    width: 44vw;
+    mix-blend-mode: overlay;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 7) img {
+    aspect-ratio: 1;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 8) {
+    left: 42vw;
+    top: 68vh;
+    width: 230px;
+    max-width: 30vw;
+    mix-blend-mode: overlay;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 9) {
+    left: 72vw;
+    top: 25vh;
+    width: 260px;
+    max-width: 28vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 10) {
+    left: 65vw;
+    top: 56vh;
+    width: 250px;
+    max-width: 28vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 11) {
+    left: 6vw;
+    top: 6vh;
+    width: 220px;
+    max-width: 26vw;
+  }
+
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 12) {
+    left: 80vw;
+    top: 72vh;
+    width: 240px;
+    max-width: 26vw;
+  }
+}
+
+/* the two smallest photos join the collage on wide screens only */
+@media (width >= 1200px) and (prefers-reduced-motion: no-preference) {
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 2),
+  .cards-photo-collage .cards-photo-collage-item:nth-child(12n + 6) {
+    display: block;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-photo-collage .cards-photo-collage-lightbox {
+    padding: 48px 24px;
+  }
+}

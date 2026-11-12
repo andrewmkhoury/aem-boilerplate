@@ -1,0 +1,58 @@
+/*
+ * Clark Lanting brand tokens, measured from https://clarklanting.com/
+ * (see migration-work/brand.json). styles.css maps the design-system tokens onto these.
+ */
+
+:root {
+  /* colors */
+  --brand-background: #121212;
+  --brand-surface: #1c1c1c;
+  --brand-text: rgb(255 255 255 / 80%);
+  --brand-heading: #fff;
+  --brand-muted: #6a6a6a;
+  --brand-link: rgb(255 255 255 / 80%);
+  --brand-link-hover: #fff;
+  --brand-accent: #da6345;
+  --brand-border: rgb(255 255 255 / 20%);
+
+  /* fonts */
+  --brand-body-font: 'Source Sans 3', source-sans-fallback, sans-serif;
+  --brand-heading-font: geologica, geologica-fallback, sans-serif;
+
+  /* type scale (mobile-first; larger values in styles.css media queries) */
+  --brand-body-size: 16px;
+  --brand-lead-size: 18px;
+  --brand-h1-size: 80px;
+  --brand-h2-size: 41.6px;
+  --brand-h3-size: 25.5px;
+
+  /* layout */
+  --brand-container-max: 1600px;
+  --brand-gutter: 15px;
+  --brand-section-space: 70px;
+  --brand-section-space-large: 140px;
+}
+
+@media (width >= 600px) {
+  :root {
+    --brand-gutter: 30px;
+  }
+}
+
+@media (width >= 900px) {
+  :root {
+    --brand-gutter: 40px;
+    --brand-h1-size: 128px;
+    --brand-h2-size: 51.2px;
+    --brand-h3-size: 30px;
+    --brand-section-space: 140px;
+    --brand-section-space-large: 210px;
+  }
+}
+
+@media (width >= 1200px) {
+  :root {
+    --brand-h1-size: 176px;
+    --brand-h2-size: 72px;
+  }
+}
